@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Quiz</h1>
+<form method="POST" action="{{ url_for('result') }}">
+    {% for question in questions %}
+    <fieldset>
+        <legend>{{ question['question_text'] }}</legend>
+        {% for option in question['options'] %}
+        <label>
+            <input type="radio" name="{{ question['id'] }}" value="{{ option }}"> {{ option }}
+        </label><br>
+        {% endfor %}
+    </fieldset>
+    {% endfor %}
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}
